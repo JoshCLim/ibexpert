@@ -17,6 +17,7 @@ interface subject {
   level: number; // 0 = SL, 1 = HL/SL
 }
 interface subjects {
+  groups: number;
   subjects: subject[][];
 }
 
