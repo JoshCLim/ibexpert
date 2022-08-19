@@ -1,19 +1,39 @@
 import express from "express";
+import cors from "cors";
+import morgan from "morgan";
 
 import config from "./config.json";
+
+import { homeFAQs, homeTutors, homeSubjects } from "./home";
+
 const app = express();
 
 const PORT: number = parseInt(process.env.PORT || config.port);
 const HOST: string = process.env.IP || "localhost";
 
 app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
 
+// root
 app.get("/", (req, res) => {
   res.json({ response: "IB Expert Backend" });
 });
 
-app.listen(parseInt(process.env.PORT || config.port), process.env.IP, () => {
-  console.log(
-    `⚡️ Server listening on port ${process.env.PORT || config.port}`
-  );
+// general data
+app.get("/home/tutors", (req, res) => {
+  res.json(homeTutors());
+});
+
+app.get("/home/subjects", (req, res) => {
+  res.json(homeSubjects());
+});
+
+app.get("/home/faqs", (req, res) => {
+  res.json(homeFAQs());
+});
+
+// start server
+app.listen(PORT, HOST, () => {
+  console.log(`⚡️ Server listening on port ${PORT}`);
 });
