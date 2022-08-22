@@ -9,6 +9,8 @@ import {
 test(`${homeTutorsPATH} returns correct type`, () => {
   const res = GET(homeTutorsPATH, {});
 
+  expect(res.statusCode).toBe(200);
+
   BODY(res).tutors.forEach((tutor) => {
     expect(tutor).toStrictEqual({
       name: expect.any(String),
@@ -21,6 +23,8 @@ test(`${homeTutorsPATH} returns correct type`, () => {
 
 test(`${homeSubjectsPATH} returns correct type`, () => {
   const res = GET(homeSubjectsPATH, {});
+
+  expect(res.statusCode).toBe(200);
 
   BODY(res).subjects.forEach((group) => {
     group.forEach((subject) => {
@@ -35,6 +39,8 @@ test(`${homeSubjectsPATH} returns correct type`, () => {
 
 test(`${homeFAQsPATH} returns correct type`, () => {
   const res = GET(homeFAQsPATH, {});
+
+  expect(res.statusCode).toBe(200);
 
   BODY(res).faqs.forEach((qn) => {
     expect(qn).toStrictEqual({

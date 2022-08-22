@@ -9,6 +9,9 @@ export const homeTutorsPATH = "home/tutors/";
 export const homeSubjectsPATH = "home/subjects/";
 export const homeFAQsPATH = "home/faqs/";
 
+export const storeItemsPATH = "store/items/";
+export const storeTagsPATH = "store/tags/";
+
 /**
  * GET request on web server with given path and parameters
  *
