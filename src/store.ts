@@ -5,7 +5,7 @@ enum itemType {
   assignment = "ASSIGNMENT",
 }
 
-interface item {
+interface itemTYPE {
   index: number; // default -1, higher == more priority i.e. featured in store
   id: number;
   name: string;
@@ -18,19 +18,19 @@ interface item {
   maxGrade?: number; // = -1 if grade not given
 }
 
-interface tag {
+interface tagTYPE {
   id: number;
   name: string;
 }
 
-interface items {
-  items: item[];
-  tags: tag[];
+interface itemsTYPE {
+  items: itemTYPE[];
+  tags: tagTYPE[];
 }
 
 // ----- PATHS ----- //
-const storeItemsPath = "./data/store/items.json";
+const storeItemsPATH = "./data/store/items.json";
 
-export function storeGetItems(): items {
-  return JSON.parse(String(fs.readFileSync(storeItemsPath)));
+export function storeGetItems(): itemsTYPE {
+  return JSON.parse(String(fs.readFileSync(storeItemsPATH)));
 }

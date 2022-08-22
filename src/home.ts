@@ -1,47 +1,46 @@
 import fs from "fs";
-import path from "path";
 
 // ----- TYPES ----- //
-interface tutor {
+interface tutorTYPE {
   name: string;
   mark: number;
   bio: string;
   picURL: string;
 }
-interface tutors {
-  tutors: tutor[];
+interface tutorsTYPE {
+  tutors: tutorTYPE[];
 }
 
-interface subject {
+interface subjectTYPE {
   name: string;
   level: number; // 0 = SL, 1 = HL/SL
 }
-interface subjects {
+interface subjectsTYPE {
   groups: number;
-  subjects: subject[][];
+  subjects: subjectTYPE[][];
 }
 
-interface qn {
+interface qnTYPE {
   question: string;
   answer: string;
 }
-interface faqs {
-  faqs: qn[];
+interface faqsTYPE {
+  faqs: qnTYPE[];
 }
 
 // ----- PATHS ----- //
-const tutorDataPath = "./data/home/tutors.json";
-const subjectsDataPath = "./data/home/subjects.json";
-const faqsDataPath = "./data/home/faqs.json";
+const tutorDataPATH = "./data/home/tutors.json";
+const subjectsDataPATH = "./data/home/subjects.json";
+const faqsDataPATH = "./data/home/faqs.json";
 
-export function homeTutors(): tutors {
-  return JSON.parse(String(fs.readFileSync(tutorDataPath)));
+export function homeTutors(): tutorsTYPE {
+  return JSON.parse(String(fs.readFileSync(tutorDataPATH)));
 }
 
-export function homeSubjects(): subjects {
-  return JSON.parse(String(fs.readFileSync(subjectsDataPath)));
+export function homeSubjects(): subjectsTYPE {
+  return JSON.parse(String(fs.readFileSync(subjectsDataPATH)));
 }
 
-export function homeFAQs(): faqs {
-  return JSON.parse(String(fs.readFileSync(faqsDataPath)));
+export function homeFAQs(): faqsTYPE {
+  return JSON.parse(String(fs.readFileSync(faqsDataPATH)));
 }
