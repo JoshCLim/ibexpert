@@ -5,6 +5,7 @@ import morgan from "morgan";
 import config from "./config.json";
 
 import { homeFAQs, homeTutors, homeSubjects } from "./home";
+import { storeGetItems } from "./store";
 
 const app = express();
 
@@ -31,6 +32,11 @@ app.get("/home/subjects", (req, res) => {
 
 app.get("/home/faqs", (req, res) => {
   res.json(homeFAQs());
+});
+
+// store
+app.get("/store/items", (req, res) => {
+  res.json(storeGetItems());
 });
 
 // start server

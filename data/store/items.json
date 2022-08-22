@@ -1,0 +1,90 @@
+{
+  "items": [
+    {
+      "index": -1,
+      "id": 1,
+      "name": "Economics HL Notes",
+      "price": 69.99,
+      "tags": [1, 8, 3],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi odit blanditiis nesciunt nihil suscipit praesentium modi delectus assumenda sit optio, officiis obcaecati facere voluptatem eveniet ullam dolor quas molestiae quam.",
+      "type": "NOTES"
+    },
+    {
+      "index": -1,
+      "id": 2,
+      "name": "Chemistry SL Notes",
+      "price": 69.99,
+      "tags": [1, 6, 3],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi odit blanditiis nesciunt nihil suscipit praesentium modi delectus assumenda sit optio, officiis obcaecati facere voluptatem eveniet ullam dolor quas molestiae quam.",
+      "type": "NOTES"
+    },
+    {
+      "index": -1,
+      "id": 3,
+      "name": "Physics HL Notes",
+      "price": 69.99,
+      "tags": [1, 7, 3],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi odit blanditiis nesciunt nihil suscipit praesentium modi delectus assumenda sit optio, officiis obcaecati facere voluptatem eveniet ullam dolor quas molestiae quam.",
+      "type": "NOTES"
+    },
+    {
+      "index": -1,
+      "id": 4,
+      "name": "Chemistry SL IA",
+      "price": 69.99,
+      "tags": [2, 6, 3],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi odit blanditiis nesciunt nihil suscipit praesentium modi delectus assumenda sit optio, officiis obcaecati facere voluptatem eveniet ullam dolor quas molestiae quam.",
+      "type": "ASSIGNMENT",
+      "grade": 22,
+      "maxGrade": 24
+    },
+    {
+      "index": -1,
+      "id": 5,
+      "name": "Maths AA Notes",
+      "price": 99.99,
+      "tags": [1, 5, 3],
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi odit blanditiis nesciunt nihil suscipit praesentium modi delectus assumenda sit optio, officiis obcaecati facere voluptatem eveniet ullam dolor quas molestiae quam.",
+      "type": "NOTES"
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "notes"
+    },
+    {
+      "id": 2,
+      "name": "IA"
+    },
+    {
+      "id": 3,
+      "name": "HL"
+    },
+    {
+      "id": 4,
+      "name": "SL"
+    },
+    {
+      "id": 5,
+      "name": "maths AA"
+    },
+    {
+      "id": 6,
+      "name": "chemistry"
+    },
+    {
+      "id": 7,
+      "name": "physics"
+    },
+    {
+      "id": 8,
+      "name": "economics"
+    }
+  ]
+}
