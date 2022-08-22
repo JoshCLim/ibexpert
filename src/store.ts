@@ -28,9 +28,18 @@ interface itemsTYPE {
   tags: tagTYPE[];
 }
 
+interface tagsTYPE {
+  tags: tagTYPE[];
+}
+
 // ----- PATHS ----- //
 const storeItemsPATH = "./data/store/items.json";
 
 export function storeGetItems(): itemsTYPE {
   return JSON.parse(String(fs.readFileSync(storeItemsPATH)));
+}
+
+export function storeGetTags(): tagsTYPE {
+  const res = JSON.parse(String(fs.readFileSync(storeItemsPATH)));
+  return { tags: res.tags };
 }
