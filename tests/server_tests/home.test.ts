@@ -1,9 +1,15 @@
-import { homeTutors, homeSubjects, homeFAQs } from "../../src/home";
+import {
+  GET,
+  BODY,
+  homeTutorsPATH,
+  homeSubjectsPATH,
+  homeFAQsPATH,
+} from "./httpRequests";
 
-test("homeTutors() returns correct type", () => {
-  const res = homeTutors();
+test(`${homeTutorsPATH} returns correct type`, () => {
+  const res = GET(homeTutorsPATH, {});
 
-  res.tutors.forEach((tutor) => {
+  BODY(res).tutors.forEach((tutor) => {
     expect(tutor).toStrictEqual({
       name: expect.any(String),
       mark: expect.any(Number),
@@ -13,10 +19,10 @@ test("homeTutors() returns correct type", () => {
   });
 });
 
-test("homeSubjects() returns correct type", () => {
-  const res = homeSubjects();
+test(`${homeSubjectsPATH} returns correct type`, () => {
+  const res = GET(homeSubjectsPATH, {});
 
-  res.subjects.forEach((group) => {
+  BODY(res).subjects.forEach((group) => {
     group.forEach((subject) => {
       expect(typeof subject.name).toBe("string");
       expect(subject.name.length).toBeGreaterThan(0);
@@ -27,10 +33,10 @@ test("homeSubjects() returns correct type", () => {
   });
 });
 
-test("homeFAQs() returns correct type", () => {
-  const res = homeFAQs();
+test(`${homeFAQsPATH} returns correct type`, () => {
+  const res = GET(homeFAQsPATH, {});
 
-  res.faqs.forEach((qn) => {
+  BODY(res).faqs.forEach((qn) => {
     expect(qn).toStrictEqual({
       question: expect.any(String),
       answer: expect.any(String),

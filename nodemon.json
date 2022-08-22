@@ -1,3 +1,11 @@
 {
-  "ignore": ["*.test.js", "fixtures/*", "*.json", "data/home"]
+  "ignore": [
+    "*.test.js",
+    "*.test.ts",
+    "fixtures/*",
+    "*.json",
+    "data/home/",
+    "data/home/",
+    "tests/"
+  ]
 }
