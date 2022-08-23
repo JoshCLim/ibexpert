@@ -1,6 +1,5 @@
-import fs from "fs";
-
-import { getData, itemsTYPE, tagsTYPE } from "./data";
+import { getData } from "./data";
+import { itemsTYPE, tagsTYPE } from "./types";
 
 // ----- PATHS ----- //
 const storeItemsPATH = "./data/store/items.json";
@@ -10,6 +9,6 @@ export function storeGetItems(): itemsTYPE {
 }
 
 export function storeGetTags(): tagsTYPE {
-  const res = getData(storeItemsPATH);
+  const res: itemsTYPE = getData(storeItemsPATH);
   return { tags: res.tags };
 }

@@ -1,6 +1,5 @@
-import fs from "fs";
-
-import { getData, tutorsTYPE, subjectsTYPE, faqsTYPE } from "./data";
+import { getData } from "./data";
+import { tutorsTYPE, subjectsTYPE, faqsTYPE } from "./types";
 
 // ----- PATHS ----- //
 const tutorDataPATH = "./data/home/tutors.json";
