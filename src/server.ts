@@ -6,6 +6,11 @@ import config from "./config.json";
 
 import { homeFAQs, homeTutors, homeSubjects } from "./home";
 import { storeGetItems, storeGetTags } from "./store";
+import {
+  adminLogin,
+  adminLogout,
+  adminLogoutAll,
+} from "./siteAdmin/siteAdminAuth";
 
 const app = express();
 
@@ -41,6 +46,21 @@ app.get("/store/items", (req, res) => {
 
 app.get("/store/tags", (req, res) => {
   res.json(storeGetTags());
+});
+
+// site-admin
+app.post("/siteadmin/login", (req, res) => {
+  const { email, password } = req.body;
+  res.json(adminLogin(email, password));
+});
+
+app.post("/siteadmin/logout", (req, res) => {
+  const token = req.headers.token as string;
+  res.json(adminLogout(token));
+});
+
+app.post("/siteadmin/logout/all", (req, res) => {
+  res.json(adminLogoutAll());
 });
 
 // start server

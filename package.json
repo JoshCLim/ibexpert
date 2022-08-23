@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
+    "test-functions": "jest --coverage tests/unit_tests/**.ts",
+    "test-routes": "jest tests/server_tests/**.ts",
     "tsc": "tsc --noImplicitAny",
     "start": "ts-node src/server.ts",
     "nodemon": "nodemon src/server.ts --config nodemon.json"
@@ -34,6 +36,7 @@
     "morgan": "^1.10.0",
     "sync-request": "^6.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "uuid": "^8.3.2"
   }
 }
