@@ -4,6 +4,7 @@ import {
   faqsTYPE,
   tutorTYPE,
   idTYPE,
+  subjectTYPE,
 } from "../types";
 import {
   tutorDataPATH,
@@ -43,7 +44,37 @@ export function adminAddTutor(name: string, mark: number, bio: string): idTYPE {
   return { id: newId };
 }
 
-export function adminAddSubject(name: string, level: number, group: number) {}
+export function adminAddSubject(
+  name: string,
+  level: number,
+  group: number
+): idTYPE {
+  if (name.length < 1 || name.length > 20) {
+    throw new Error("invalid name length");
+  }
+  if (level != 0 && level != 1) {
+    throw new Error("level must be 0 (SL) or 1 (HL/SL)");
+  }
+
+  const subjects: subjectsTYPE = getData(subjectsDataPATH);
+
+  if (group < 1 || group > subjects.groups) {
+    throw new Error("group num must be from 1-6");
+  }
+
+  const newId = generateId([].concat(...subjects.subjects));
+  const newSubject: subjectTYPE = {
+    id: newId,
+    name: name,
+    level: level,
+  };
+
+  subjects.subjects[group].push(newSubject);
+
+  setData(subjectsDataPATH, subjects);
+
+  return { id: newId };
+}
 
 export function adminAddFAQ(question: string, answer: string) {}
 
