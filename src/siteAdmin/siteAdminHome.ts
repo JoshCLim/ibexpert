@@ -5,6 +5,7 @@ import {
   tutorTYPE,
   idTYPE,
   subjectTYPE,
+  qnTYPE,
 } from "../types";
 import {
   tutorDataPATH,
@@ -76,7 +77,28 @@ export function adminAddSubject(
   return { id: newId };
 }
 
-export function adminAddFAQ(question: string, answer: string) {}
+export function adminAddFAQ(question: string, answer: string): idTYPE {
+  if (question.length < 1 || question.length > 50) {
+    throw new Error("invalid question length");
+  }
+  if (answer.length < 1 || answer.length > 100) {
+    throw new Error("invalid answer length");
+  }
+
+  const faqs: faqsTYPE = getData(faqsDataPATH);
+  const newId = generateId(faqs.faqs);
+  const newQn: qnTYPE = {
+    id: newId,
+    question: question,
+    answer: answer,
+  };
+
+  faqs.faqs.push(newQn);
+
+  setData(faqsDataPATH, faqs);
+
+  return { id: newId };
+}
 
 // ---- helper functions ---- //
 /**
