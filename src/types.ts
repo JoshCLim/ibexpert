@@ -67,3 +67,8 @@ export interface adminTYPE {
 export interface adminsTYPE {
   admins: adminTYPE[];
 }
+
+// site-admin
+export interface idTYPE {
+  id: number;
+}

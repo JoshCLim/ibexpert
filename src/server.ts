@@ -11,6 +11,11 @@ import {
   adminLogout,
   adminLogoutAll,
 } from "./siteAdmin/siteAdminAuth";
+import {
+  adminAddTutor,
+  adminAddSubject,
+  adminAddFAQ,
+} from "./siteAdmin/siteAdminHome";
 
 const app = express();
 
@@ -48,7 +53,7 @@ app.get("/store/tags", (req, res) => {
   res.json(storeGetTags());
 });
 
-// site-admin
+// site-admin auth
 app.post("/siteadmin/login", (req, res) => {
   const { email, password } = req.body;
   res.json(adminLogin(email, password));
@@ -61,6 +66,22 @@ app.post("/siteadmin/logout", (req, res) => {
 
 app.post("/siteadmin/logout/all", (req, res) => {
   res.json(adminLogoutAll());
+});
+
+// site-admin home
+app.post("/siteadmin/home/addsubject", (req, res) => {
+  const { name, level, group } = req.body;
+  res.json(adminAddSubject(name, level, group));
+});
+
+app.post("/siteadmin/home/addtutor", (req, res) => {
+  const { name, mark, bio } = req.body;
+  res.json(adminAddTutor(name, mark, bio));
+});
+
+app.post("/siteadmin/home/addfaq", (req, res) => {
+  const { question, answer } = req.body;
+  res.json(adminAddFAQ(question, answer));
 });
 
 // start server
