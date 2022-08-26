@@ -12,6 +12,10 @@ export const homeFAQsPATH = "home/faqs/";
 export const storeItemsPATH = "store/items/";
 export const storeTagsPATH = "store/tags/";
 
+export const adminLoginPATH = "siteadmin/login/";
+export const adminLogoutPATH = "siteadmin/logout";
+export const adminLogoutAllPATH = "siteadmin/logout/all";
+
 /**
  * GET request on web server with given path and parameters
  *
