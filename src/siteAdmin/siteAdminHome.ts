@@ -70,7 +70,7 @@ export function adminAddSubject(
     level: level,
   };
 
-  subjects.subjects[group].push(newSubject);
+  subjects.subjects[group - 1].push(newSubject);
 
   setData(subjectsDataPATH, subjects);
 
