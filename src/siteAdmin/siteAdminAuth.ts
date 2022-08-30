@@ -57,7 +57,7 @@ export function adminLogout(token: string) {
     const hashedTokens = admin.tokens.map((value) => hash(value + SECRET));
 
     if (hashedTokens.includes(token)) {
-      admin.tokens.filter((value) => value !== token);
+      admin.tokens = admin.tokens.filter((value) => value !== token);
 
       setData(adminPATH, admins);
       tokenFound = true;
