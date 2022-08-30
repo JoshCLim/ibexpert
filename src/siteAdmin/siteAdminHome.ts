@@ -14,11 +14,19 @@ import {
   getData,
   setData,
 } from "../data";
+import { validateAdminToken } from "./siteAdminAuth";
 
 const defaultPicURL =
   "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 
-export function adminAddTutor(name: string, mark: number, bio: string): idTYPE {
+export function adminAddTutor(
+  token: string,
+  name: string,
+  mark: number,
+  bio: string
+): idTYPE {
+  validateAdminToken(token);
+
   if (name.length < 1 || name.length > 20) {
     throw new Error("invalid name length");
   }
@@ -46,10 +54,13 @@ export function adminAddTutor(name: string, mark: number, bio: string): idTYPE {
 }
 
 export function adminAddSubject(
+  token: string,
   name: string,
   level: number,
   group: number
 ): idTYPE {
+  validateAdminToken(token);
+
   if (name.length < 1 || name.length > 20) {
     throw new Error("invalid name length");
   }
@@ -77,7 +88,13 @@ export function adminAddSubject(
   return { id: newId };
 }
 
-export function adminAddFAQ(question: string, answer: string): idTYPE {
+export function adminAddFAQ(
+  token: string,
+  question: string,
+  answer: string
+): idTYPE {
+  validateAdminToken(token);
+
   if (question.length < 1 || question.length > 50) {
     throw new Error("invalid question length");
   }

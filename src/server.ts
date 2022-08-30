@@ -70,18 +70,21 @@ app.post("/siteadmin/logout/all", (req, res) => {
 
 // site-admin home
 app.post("/siteadmin/home/addsubject", (req, res) => {
+  const token = req.headers.token as string;
   const { name, level, group } = req.body;
-  res.json(adminAddSubject(name, level, group));
+  res.json(adminAddSubject(token, name, level, group));
 });
 
 app.post("/siteadmin/home/addtutor", (req, res) => {
+  const token = req.headers.token as string;
   const { name, mark, bio } = req.body;
-  res.json(adminAddTutor(name, mark, bio));
+  res.json(adminAddTutor(token, name, mark, bio));
 });
 
 app.post("/siteadmin/home/addfaq", (req, res) => {
+  const token = req.headers.token as string;
   const { question, answer } = req.body;
-  res.json(adminAddFAQ(question, answer));
+  res.json(adminAddFAQ(token, question, answer));
 });
 
 // start server
