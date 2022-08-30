@@ -82,6 +82,8 @@ export function adminLogoutAll() {
   });
 
   setData(adminPATH, admins);
+
+  return {};
 }
 
 /**
