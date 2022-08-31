@@ -26,10 +26,10 @@ const defaultPicURL =
  * @param {number} mark of new tutor
  * @param {string} bio of new tutor
  * @returns {idTYPE} id of new tutor added
- * @throws {403} if token invalid
- * @throws {400} if tutor name not within 1-20 character
- * @throws {400} if tutor mark is not between 24-45 inclusive
- * @throws {400} if tutor bio is greater than 30 characters
+ * @throws {403} token invalid
+ * @throws {400} tutor name not within 1-20 character
+ * @throws {400} tutor mark is not between 24-45 inclusive
+ * @throws {400} tutor bio is greater than 30 characters
  */
 export function adminAddTutor(
   token: string,
@@ -72,9 +72,9 @@ export function adminAddTutor(
  * @param {levelTYPE} level = 0 for SL, 1 for SL/HL
  * @param {number} group = number from 1-6
  * @returns {idTYPE} id of new subject
- * @throws {403} if token invalid
- * @throws {400} if subject name not between 1-20 characters
- * @throws {400} if level is not either 0 or 1
+ * @throws {403} token invalid
+ * @throws {400} subject name not between 1-20 characters
+ * @throws {400} level is not either 0 or 1
  */
 export function adminAddSubject(
   token: string,
@@ -113,7 +113,7 @@ export function adminAddSubject(
 
 /**
  * adds a new faq to the database
- * @param {string} token for admin (authentication)
+ * @param {string} token of admin (authentication)
  * @param {string} question of new faq
  * @param {string} answer of new faq
  * @returns {idTYPE} id of new FAQ
@@ -151,12 +151,14 @@ export function adminAddFAQ(
 }
 
 /**
- *
- * @param token
- * @param tutorId
- * @returns
+ * removes a tutor from the database
+ * @param {string} token of admin (authentication)
+ * @param {number} tutorId of tutor to remove
+ * @returns { {} } empty object
+ * @throws {403} invalid token
+ * @throws {400} no tutor with tutorId exists
  */
-export function adminRemoveTutor(token: string, tutorId: number) {
+export function adminRemoveTutor(token: string, tutorId: number): {} {
   validateAdminToken(token);
 
   const tutors: tutorsTYPE = getData(tutorDataPATH);
@@ -173,7 +175,15 @@ export function adminRemoveTutor(token: string, tutorId: number) {
   return {};
 }
 
-export function adminRemoveSubject(token: string, subjectId: number) {
+/**
+ * remove a subject from the database
+ * @param {string} token of admin (authentication)
+ * @param {number} subjectId of subject to remove
+ * @returns { {} } empty object
+ * @throws {403} invalid token
+ * @throws {400} no subject with subjectId exists
+ */
+export function adminRemoveSubject(token: string, subjectId: number): {} {
   validateAdminToken(token);
 
   const subjects: subjectsTYPE = getData(subjectsDataPATH);
@@ -203,7 +213,15 @@ export function adminRemoveSubject(token: string, subjectId: number) {
   return {};
 }
 
-export function adminRemoveFAQ(token: string, qnId: number) {
+/**
+ * remove a qn from the database
+ * @param {string} token of admin (authentication)
+ * @param {number} qnId of faq to remove
+ * @returns { {} } empty object
+ * @throws {403} invalid token
+ * @throws {400} no qn with qnId exists
+ */
+export function adminRemoveFAQ(token: string, qnId: number): {} {
   validateAdminToken(token);
 
   const faqs: faqsTYPE = getData(faqsDataPATH);
