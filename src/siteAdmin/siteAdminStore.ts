@@ -124,7 +124,7 @@ export function adminRemoveStoreItem(token: string, itemId: number): {} {
   items.items = items.items.filter((item) => item.id !== itemId);
   const finalLen = items.items.length;
 
-  if (initLen !== finalLen) {
+  if (initLen === finalLen) {
     throw new Error("no item with id exists");
   }
 
@@ -148,7 +148,7 @@ export function adminRemoveStoreTag(token: string, tagId: number): {} {
   items.tags = items.tags.filter((tag) => tag.id !== tagId);
   const finalLen = items.tags.length;
 
-  if (initLen !== finalLen) {
+  if (initLen === finalLen) {
     throw new Error("no tag with that id exists");
   }
 
