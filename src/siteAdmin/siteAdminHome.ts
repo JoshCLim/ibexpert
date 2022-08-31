@@ -19,6 +19,18 @@ import { validateAdminToken } from "./siteAdminAuth";
 const defaultPicURL =
   "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 
+/**
+ * add a new tutor to the database
+ * @param {string} token of admin (authentication)
+ * @param {string} name of new tutor
+ * @param {number} mark of new tutor
+ * @param {string} bio of new tutor
+ * @returns {idTYPE} id of new tutor added
+ * @throws {403} if token invalid
+ * @throws {400} if tutor name not within 1-20 character
+ * @throws {400} if tutor mark is not between 24-45 inclusive
+ * @throws {400} if tutor bio is greater than 30 characters
+ */
 export function adminAddTutor(
   token: string,
   name: string,
@@ -53,6 +65,17 @@ export function adminAddTutor(
   return { id: newId };
 }
 
+/**
+ * add a new subject to the database
+ * @param {string} token of admin (authentication)
+ * @param {string} name of new subject
+ * @param {levelTYPE} level = 0 for SL, 1 for SL/HL
+ * @param {number} group = number from 1-6
+ * @returns {idTYPE} id of new subject
+ * @throws {403} if token invalid
+ * @throws {400} if subject name not between 1-20 characters
+ * @throws {400} if level is not either 0 or 1
+ */
 export function adminAddSubject(
   token: string,
   name: string,
@@ -88,6 +111,16 @@ export function adminAddSubject(
   return { id: newId };
 }
 
+/**
+ * adds a new faq to the database
+ * @param {string} token for admin (authentication)
+ * @param {string} question of new faq
+ * @param {string} answer of new faq
+ * @returns {idTYPE} id of new FAQ
+ * @throws {403} invalid token
+ * @throws {400} question not between 1 and 50 characters
+ * @throws {400} answer not between 1 and 100 characters
+ */
 export function adminAddFAQ(
   token: string,
   question: string,
@@ -115,6 +148,77 @@ export function adminAddFAQ(
   setData(faqsDataPATH, faqs);
 
   return { id: newId };
+}
+
+/**
+ *
+ * @param token
+ * @param tutorId
+ * @returns
+ */
+export function adminRemoveTutor(token: string, tutorId: number) {
+  validateAdminToken(token);
+
+  const tutors: tutorsTYPE = getData(tutorDataPATH);
+
+  const initLen = tutors.tutors.length;
+  tutors.tutors = tutors.tutors.filter((tutor) => tutor.id !== tutorId);
+  const finalLen = tutors.tutors.length;
+
+  if (initLen == finalLen) {
+    throw new Error("no tutor id exists");
+  }
+
+  setData(tutorDataPATH, tutors);
+  return {};
+}
+
+export function adminRemoveSubject(token: string, subjectId: number) {
+  validateAdminToken(token);
+
+  const subjects: subjectsTYPE = getData(subjectsDataPATH);
+
+  let found = false;
+
+  for (let i = 0; i < subjects.groups; i++) {
+    let initLen = subjects.subjects[i].length;
+
+    subjects.subjects[i] = subjects.subjects[i].filter(
+      (subject) => subject.id !== subjectId
+    );
+
+    let finalLen = subjects.subjects[i].length;
+
+    if (initLen !== finalLen) {
+      found = true;
+    }
+  }
+
+  if (found == false) {
+    throw new Error("no subject with id found");
+  }
+
+  setData(subjectsDataPATH, subjects);
+
+  return {};
+}
+
+export function adminRemoveFAQ(token: string, qnId: number) {
+  validateAdminToken(token);
+
+  const faqs: faqsTYPE = getData(faqsDataPATH);
+
+  const initLen = faqs.faqs.length;
+  faqs.faqs = faqs.faqs.filter((qn) => qn.id !== qnId);
+  const finalLen = faqs.faqs.length;
+
+  if (initLen === finalLen) {
+    throw new Error("no question with qnId found");
+  }
+
+  setData(faqsDataPATH, faqs);
+
+  return {};
 }
 
 // ---- helper functions ---- //

@@ -15,6 +15,9 @@ import {
   adminAddTutor,
   adminAddSubject,
   adminAddFAQ,
+  adminRemoveSubject,
+  adminRemoveTutor,
+  adminRemoveFAQ,
 } from "./siteAdmin/siteAdminHome";
 
 const app = express();
@@ -85,6 +88,24 @@ app.post("/siteadmin/home/addfaq", (req, res) => {
   const token = req.headers.token as string;
   const { question, answer } = req.body;
   res.json(adminAddFAQ(token, question, answer));
+});
+
+app.delete("/siteadmin/home/removesubject", (req, res) => {
+  const token = req.headers.token as string;
+  const { subjectId } = req.body;
+  res.json(adminRemoveSubject(token, subjectId));
+});
+
+app.delete("/siteadmin/home/removetutor", (req, res) => {
+  const token = req.headers.token as string;
+  const { tutorId } = req.body;
+  res.json(adminRemoveTutor(token, tutorId));
+});
+
+app.delete("/siteadmin/home/removefaq", (req, res) => {
+  const token = req.headers.token as string;
+  const { qnId } = req.body;
+  res.json(adminRemoveFAQ(token, qnId));
 });
 
 // start server
