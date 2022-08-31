@@ -89,21 +89,29 @@ export function adminLogoutAll() {
 /**
  * checks if an admin's token is valid
  *
- * @param {string} token admin's token to be validated
+ * @param {string} token admin's hashed token to be validated
  *
  * @returns {boolean} true - if token valid
  *
  * @throws {401} if token invalid
  */
-export function validateAdminToken(token: string) {
+export function validateAdminToken(token: string): boolean {
   const admins: adminsTYPE = getData(adminPATH);
+
+  let found = false;
+
   admins.admins.forEach((admin) => {
-    if (admin.tokens.includes(hash(token + SECRET))) {
-      return true;
+    const hashes = admin.tokens.map((value) => hash(value + SECRET));
+    if (hashes.includes(token)) {
+      found = true;
     }
   });
 
-  throw new Error("invalid admin token");
+  if (found == false) {
+    throw new Error("invalid admin token");
+  }
+
+  return true;
 }
 
 // ----- HELPER FUNCTIONS ----- //
