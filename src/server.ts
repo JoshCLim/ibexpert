@@ -19,6 +19,12 @@ import {
   adminRemoveTutor,
   adminRemoveFAQ,
 } from "./siteAdmin/siteAdminHome";
+import {
+  adminAddStoreItem,
+  adminAddStoreTag,
+  adminRemoveStoreItem,
+  adminRemoveStoreTag,
+} from "./siteAdmin/siteAdminStore";
 
 const app = express();
 
@@ -106,6 +112,31 @@ app.delete("/siteadmin/home/removefaq", (req, res) => {
   const token = req.headers.token as string;
   const { qnId } = req.body;
   res.json(adminRemoveFAQ(token, qnId));
+});
+
+// site-admin store
+app.post("/siteadmin/store/additem", (req, res) => {
+  const token = req.headers.token as string;
+  const { name, price, imageUrl, description, type } = req.body;
+  res.json(adminAddStoreItem(token, name, price, imageUrl, description, type));
+});
+
+app.post("/siteadmin/store/addtag", (req, res) => {
+  const token = req.headers.token as string;
+  const { name } = req.body;
+  res.json(adminAddStoreTag(token, name));
+});
+
+app.delete("/siteadmin/store/removeitem", (req, res) => {
+  const token = req.headers.token as string;
+  const { itemId } = req.body;
+  res.json(adminRemoveStoreItem(token, itemId));
+});
+
+app.delete("/siteadmin/store/removetag", (req, res) => {
+  const token = req.headers.token as string;
+  const { tagId } = req.body;
+  res.json(adminRemoveStoreTag(token, tagId));
 });
 
 // start server
