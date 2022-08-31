@@ -11,10 +11,11 @@ export interface tutorTYPE {
 export interface tutorsTYPE {
   tutors: tutorTYPE[];
 }
+type levelTYPE = 0 | 1;
 export interface subjectTYPE {
   id: number;
   name: string;
-  level: number; // 0 = SL, 1 = HL/SL
+  level: levelTYPE; // 0 = SL, 1 = HL/SL
 }
 export interface subjectsTYPE {
   groups: number;
