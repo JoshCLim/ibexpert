@@ -2,6 +2,7 @@
 
 // home
 export interface tutorTYPE {
+  id: number;
   name: string;
   mark: number;
   bio: string;
@@ -10,15 +11,18 @@ export interface tutorTYPE {
 export interface tutorsTYPE {
   tutors: tutorTYPE[];
 }
+type levelTYPE = 0 | 1;
 export interface subjectTYPE {
+  id: number;
   name: string;
-  level: number; // 0 = SL, 1 = HL/SL
+  level: levelTYPE; // 0 = SL, 1 = HL/SL
 }
 export interface subjectsTYPE {
   groups: number;
   subjects: subjectTYPE[][];
 }
 export interface qnTYPE {
+  id: number;
   question: string;
   answer: string;
 }
@@ -63,4 +67,9 @@ export interface adminTYPE {
 }
 export interface adminsTYPE {
   admins: adminTYPE[];
+}
+
+// site-admin
+export interface idTYPE {
+  id: number;
 }

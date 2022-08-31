@@ -11,6 +11,14 @@ import {
   adminLogout,
   adminLogoutAll,
 } from "./siteAdmin/siteAdminAuth";
+import {
+  adminAddTutor,
+  adminAddSubject,
+  adminAddFAQ,
+  adminRemoveSubject,
+  adminRemoveTutor,
+  adminRemoveFAQ,
+} from "./siteAdmin/siteAdminHome";
 
 const app = express();
 
@@ -48,7 +56,7 @@ app.get("/store/tags", (req, res) => {
   res.json(storeGetTags());
 });
 
-// site-admin
+// site-admin auth
 app.post("/siteadmin/login", (req, res) => {
   const { email, password } = req.body;
   res.json(adminLogin(email, password));
@@ -61,6 +69,43 @@ app.post("/siteadmin/logout", (req, res) => {
 
 app.post("/siteadmin/logout/all", (req, res) => {
   res.json(adminLogoutAll());
+});
+
+// site-admin home
+app.post("/siteadmin/home/addsubject", (req, res) => {
+  const token = req.headers.token as string;
+  const { name, level, group } = req.body;
+  res.json(adminAddSubject(token, name, level, group));
+});
+
+app.post("/siteadmin/home/addtutor", (req, res) => {
+  const token = req.headers.token as string;
+  const { name, mark, bio } = req.body;
+  res.json(adminAddTutor(token, name, mark, bio));
+});
+
+app.post("/siteadmin/home/addfaq", (req, res) => {
+  const token = req.headers.token as string;
+  const { question, answer } = req.body;
+  res.json(adminAddFAQ(token, question, answer));
+});
+
+app.delete("/siteadmin/home/removesubject", (req, res) => {
+  const token = req.headers.token as string;
+  const { subjectId } = req.body;
+  res.json(adminRemoveSubject(token, subjectId));
+});
+
+app.delete("/siteadmin/home/removetutor", (req, res) => {
+  const token = req.headers.token as string;
+  const { tutorId } = req.body;
+  res.json(adminRemoveTutor(token, tutorId));
+});
+
+app.delete("/siteadmin/home/removefaq", (req, res) => {
+  const token = req.headers.token as string;
+  const { qnId } = req.body;
+  res.json(adminRemoveFAQ(token, qnId));
 });
 
 // start server
