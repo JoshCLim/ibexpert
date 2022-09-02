@@ -202,7 +202,7 @@ export function userAuthLogoutAll(token: string): {} {
  * @param {string} newHandleStr of user
  * @returns {string} new handleStr to be generated
  */
-function generateHandleStr(newHandleStr: string) {
+function generateHandleStr(newHandleStr: string): string {
   const currentUsers: usersTYPE = getData(usersPATH);
 
   let handleStrIndex = 1;
