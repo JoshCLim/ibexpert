@@ -10,6 +10,8 @@ export const storeItemsPATH = "./data/store/items.json";
 
 export const adminPATH = "./data/admin/admin.json";
 
+export const usersPATH = "./data/users/users.json";
+
 // ----- FUNCTIONS ----- //
 export function getData(path: string) {
   return JSON.parse(String(fs.readFileSync(path)));

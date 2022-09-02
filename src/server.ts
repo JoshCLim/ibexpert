@@ -25,6 +25,7 @@ import {
   adminRemoveStoreItem,
   adminRemoveStoreTag,
 } from "./siteAdmin/siteAdminStore";
+import { userAuthRegister } from "./userPortal/userAuth";
 
 const app = express();
 
@@ -137,6 +138,23 @@ app.delete("/siteadmin/store/removetag", (req, res) => {
   const token = req.headers.token as string;
   const { tagId } = req.body;
   res.json(adminRemoveStoreTag(token, tagId));
+});
+
+// user portal
+app.post("/user/auth/register", (req, res) => {
+  const { email, password, nameFirst, nameLast, graduationYear, dob, school } =
+    req.body;
+  res.json(
+    userAuthRegister(
+      email,
+      password,
+      nameFirst,
+      nameLast,
+      graduationYear,
+      dob,
+      school
+    )
+  );
 });
 
 // start server

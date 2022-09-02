@@ -76,13 +76,19 @@ export interface idTYPE {
 
 // users
 export interface userProfileTYPE {
-  id: number;
-  tokens: string[];
+  id: number; // user id
+  tokens: string[]; // list of user tokens
   email: string;
   password: string;
   nameFirst: string;
   nameLast: string;
+  handleStr: string; // username
   graduationYear?: number;
-  dob?: Date;
+  dob?: Date; // date of birth
   school?: string;
+  removed: boolean; // is the user removed?
+}
+
+export interface usersTYPE {
+  users: userProfileTYPE[];
 }
