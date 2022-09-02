@@ -25,7 +25,11 @@ import {
   adminRemoveStoreItem,
   adminRemoveStoreTag,
 } from "./siteAdmin/siteAdminStore";
-import { userAuthLogin, userAuthRegister } from "./userPortal/userAuth";
+import {
+  userAuthLogin,
+  userAuthLogout,
+  userAuthRegister,
+} from "./userPortal/userAuth";
 
 const app = express();
 
@@ -160,6 +164,11 @@ app.post("/user/auth/register", (req, res) => {
 app.post("/user/auth/login", (req, res) => {
   const { email, password } = req.body;
   res.json(userAuthLogin(email, password));
+});
+
+app.post("/user/auth/logout", (req, res) => {
+  const token = req.headers.token as string;
+  res.json(userAuthLogout(token));
 });
 
 // start server
