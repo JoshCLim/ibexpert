@@ -82,7 +82,7 @@ export interface userProfileTYPE {
   password: string;
   nameFirst: string;
   nameLast: string;
-  graduationYear: number;
-  dob: Date;
+  graduationYear?: number;
+  dob?: Date;
   school?: string;
 }
