@@ -13,6 +13,7 @@ import {
   faqsDataPATH,
   getData,
   setData,
+  generateId,
 } from "../data";
 import { validateAdminToken } from "./siteAdminAuth";
 
@@ -237,18 +238,4 @@ export function adminRemoveFAQ(token: string, qnId: number): {} {
   setData(faqsDataPATH, faqs);
 
   return {};
-}
-
-// ---- helper functions ---- //
-/**
- * generate id for a dataStore
- * @param array any array of objects which have property id
- * @returns new unique id
- */
-function generateId(array: any): number {
-  const ids = array.map((item) => item.id);
-  if (ids.length < 1) {
-    return 1;
-  }
-  return Math.max(...ids) + 1;
 }
