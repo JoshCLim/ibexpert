@@ -25,6 +25,12 @@ import {
   adminRemoveStoreItem,
   adminRemoveStoreTag,
 } from "./siteAdmin/siteAdminStore";
+import {
+  userAuthLogin,
+  userAuthLogout,
+  userAuthLogoutAll,
+  userAuthRegister,
+} from "./userPortal/userAuth";
 
 const app = express();
 
@@ -137,6 +143,38 @@ app.delete("/siteadmin/store/removetag", (req, res) => {
   const token = req.headers.token as string;
   const { tagId } = req.body;
   res.json(adminRemoveStoreTag(token, tagId));
+});
+
+// user portal
+app.post("/user/auth/register", (req, res) => {
+  const { email, password, nameFirst, nameLast, graduationYear, dob, school } =
+    req.body;
+  res.json(
+    userAuthRegister(
+      email,
+      password,
+      nameFirst,
+      nameLast,
+      graduationYear,
+      dob,
+      school
+    )
+  );
+});
+
+app.post("/user/auth/login", (req, res) => {
+  const { email, password } = req.body;
+  res.json(userAuthLogin(email, password));
+});
+
+app.post("/user/auth/logout", (req, res) => {
+  const token = req.headers.token as string;
+  res.json(userAuthLogout(token));
+});
+
+app.post("/user/auth/logout/all", (req, res) => {
+  const token = req.headers.token as string;
+  res.json(userAuthLogoutAll(token));
 });
 
 // start server

@@ -1,7 +1,6 @@
 import { v4 as uuid } from "uuid";
-import crypto from "crypto";
 
-import { adminPATH, getData, setData } from "../data";
+import { adminPATH, getData, setData, hash } from "../data";
 import { adminsTYPE } from "../types";
 
 interface token {
@@ -115,13 +114,3 @@ export function validateAdminToken(token: string): boolean {
 }
 
 // ----- HELPER FUNCTIONS ----- //
-/**
- * creates a hash for a given string
- *
- * @param { string } plainText that we want to hash
- *
- * @returns { string } hash generated from string
- */
-export function hash(plainText: string): string {
-  return crypto.createHash("sha256").update(plainText).digest("hex");
-}

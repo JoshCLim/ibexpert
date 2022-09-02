@@ -1,4 +1,5 @@
 import fs from "fs";
+import crypto from "crypto";
 
 // ----- PATHS ----- //
 export const tutorDataPATH = "./data/home/tutors.json";
@@ -8,6 +9,8 @@ export const faqsDataPATH = "./data/home/faqs.json";
 export const storeItemsPATH = "./data/store/items.json";
 
 export const adminPATH = "./data/admin/admin.json";
+
+export const usersPATH = "./data/users/users.json";
 
 // ----- FUNCTIONS ----- //
 export function getData(path: string) {
@@ -29,4 +32,15 @@ export function generateId(array: any): number {
     return 1;
   }
   return Math.max(...ids) + 1;
+}
+
+/**
+ * creates a hash for a given string
+ *
+ * @param { string } plainText that we want to hash
+ *
+ * @returns { string } hash generated from string
+ */
+export function hash(plainText: string): string {
+  return crypto.createHash("sha256").update(plainText).digest("hex");
 }
