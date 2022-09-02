@@ -84,4 +84,5 @@ export interface userProfileTYPE {
   nameLast: string;
   graduationYear: number;
   dob: Date;
+  school?: string;
 }

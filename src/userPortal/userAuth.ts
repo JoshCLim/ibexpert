@@ -13,7 +13,8 @@ function userAuthRegister(
   nameFirst: string,
   nameLast: string,
   graduationYear: number,
-  dob: Date
+  dob: Date,
+  school?: string
 ): token {
   return { token: "token" };
 }
