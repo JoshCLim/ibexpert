@@ -176,6 +176,23 @@ export function userAuthLogout(token: string): {} {
  * @throws {403} if invalid token
  */
 export function userAuthLogoutAll(token: string): {} {
+  const currentUsers: usersTYPE = getData(usersPATH);
+
+  const matchingTokens = currentUsers.users.filter((user) => {
+    const hashedTokens = user.tokens.map((val) => hash(val + SECRET));
+    return hashedTokens.includes(token);
+  });
+  if (matchingTokens.length === 0) {
+    throw new Error("invalid token");
+  }
+  if (matchingTokens.length > 1) {
+    throw new Error("internal server error: duplicate tokens");
+  }
+
+  matchingTokens[0].tokens = [];
+
+  setData(usersPATH, currentUsers);
+
   return {};
 }
 

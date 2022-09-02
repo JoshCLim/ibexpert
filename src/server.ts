@@ -28,6 +28,7 @@ import {
 import {
   userAuthLogin,
   userAuthLogout,
+  userAuthLogoutAll,
   userAuthRegister,
 } from "./userPortal/userAuth";
 
@@ -169,6 +170,11 @@ app.post("/user/auth/login", (req, res) => {
 app.post("/user/auth/logout", (req, res) => {
   const token = req.headers.token as string;
   res.json(userAuthLogout(token));
+});
+
+app.post("/user/auth/logout/all", (req, res) => {
+  const token = req.headers.token as string;
+  res.json(userAuthLogoutAll(token));
 });
 
 // start server
