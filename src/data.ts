@@ -17,3 +17,16 @@ export function getData(path: string) {
 export function setData(path: string, object: any) {
   fs.writeFileSync(path, JSON.stringify(object, null, 4));
 }
+
+/**
+ * generate id for a dataStore
+ * @param array any array of objects which have property id
+ * @returns new unique id
+ */
+export function generateId(array: any): number {
+  const ids = array.map((item) => item.id);
+  if (ids.length < 1) {
+    return 1;
+  }
+  return Math.max(...ids) + 1;
+}
