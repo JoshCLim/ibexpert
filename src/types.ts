@@ -73,3 +73,15 @@ export interface adminsTYPE {
 export interface idTYPE {
   id: number;
 }
+
+// users
+export interface userProfileTYPE {
+  id: number;
+  tokens: string[];
+  email: string;
+  password: string;
+  nameFirst: string;
+  nameLast: string;
+  graduationYear: number;
+  dob: Date;
+}
