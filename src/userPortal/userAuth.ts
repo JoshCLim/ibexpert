@@ -111,7 +111,29 @@ export function userAuthRegister(
  * @throws {403} if password invalid
  */
 export function userAuthLogin(email: string, password: string): token {
-  return { token: "token" };
+  const currentUsers: usersTYPE = getData(usersPATH);
+
+  const matchingEmail = currentUsers.users.filter(
+    (user) => user.email === email
+  );
+  if (matchingEmail.length === 0) {
+    throw new Error("invalid login details");
+  } else if (matchingEmail.length > 1) {
+    throw new Error(
+      "internal server error: more than one user with same email"
+    );
+  }
+  if (matchingEmail[0].password !== password) {
+    throw new Error("invalid password");
+  }
+
+  const newToken = uuid();
+
+  matchingEmail[0].tokens.push(newToken);
+
+  setData(usersPATH, currentUsers);
+
+  return { token: hash(newToken + SECRET) };
 }
 
 /**

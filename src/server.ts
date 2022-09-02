@@ -25,7 +25,7 @@ import {
   adminRemoveStoreItem,
   adminRemoveStoreTag,
 } from "./siteAdmin/siteAdminStore";
-import { userAuthRegister } from "./userPortal/userAuth";
+import { userAuthLogin, userAuthRegister } from "./userPortal/userAuth";
 
 const app = express();
 
@@ -155,6 +155,11 @@ app.post("/user/auth/register", (req, res) => {
       school
     )
   );
+});
+
+app.post("/user/auth/login", (req, res) => {
+  const { email, password } = req.body;
+  res.json(userAuthLogin(email, password));
 });
 
 // start server
