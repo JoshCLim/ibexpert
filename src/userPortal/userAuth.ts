@@ -226,7 +226,7 @@ function generateHandleStr(newHandleStr: string): string {
 }
 
 /**
- *
+ * validates a user token
  * @param {string} token to validate
  * @returns {boolean} true, if token valid
  * @throws {403} invalid token
