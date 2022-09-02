@@ -1,84 +1,84 @@
 {
-  "faqs": [
-    {
-      "id": 1,
-      "question": "Heya",
-      "answer": "How u doin"
-    },
-    {
-      "id": 2,
-      "question": "Why IBExpert?",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 3,
-      "question": "Yeeto",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 4,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 5,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 6,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 7,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 8,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 9,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 10,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 11,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 12,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 13,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 14,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 15,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    },
-    {
-      "id": 16,
-      "question": "adfjklsdfl;kajsf",
-      "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
-    }
-  ]
+    "faqs": [
+        {
+            "id": 1,
+            "question": "Heya",
+            "answer": "How u doin"
+        },
+        {
+            "id": 2,
+            "question": "Why IBExpert?",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 3,
+            "question": "Yeeto",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 4,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 5,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 6,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 7,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 8,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 9,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 10,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 11,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 12,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 13,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 14,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 15,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        },
+        {
+            "id": 16,
+            "question": "adfjklsdfl;kajsf",
+            "answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente id officia porro fugit necessitatibus commodi, impedit suscipit. Earum recusandae numquam officia aspernatur quod debitis! Praesentium voluptates alias eos nulla facilis?"
+        }
+    ]
 }
