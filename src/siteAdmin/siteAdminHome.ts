@@ -1,3 +1,5 @@
+import createError from "http-errors";
+
 import {
   tutorsTYPE,
   subjectsTYPE,
@@ -27,7 +29,7 @@ const defaultPicURL =
  * @param {number} mark of new tutor
  * @param {string} bio of new tutor
  * @returns {idTYPE} id of new tutor added
- * @throws {403} token invalid
+ * @throws {401} token invalid
  * @throws {400} tutor name not within 1-20 character
  * @throws {400} tutor mark is not between 24-45 inclusive
  * @throws {400} tutor bio is greater than 30 characters
@@ -41,13 +43,13 @@ export function adminAddTutor(
   validateAdminToken(token);
 
   if (name.length < 1 || name.length > 20) {
-    throw new Error("invalid name length");
+    throw createError(400, "invalid name length");
   }
   if (mark > 45 || mark < 24) {
-    throw new Error("invalid mark");
+    throw createError(400, "invalid mark");
   }
   if (bio.length > 30) {
-    throw new Error("bio must be less than 30 characters long");
+    throw createError(400, "bio must be less than 30 characters long");
   }
 
   const tutors: tutorsTYPE = getData(tutorDataPATH);
@@ -73,9 +75,10 @@ export function adminAddTutor(
  * @param {levelTYPE} level = 0 for SL, 1 for SL/HL
  * @param {number} group = number from 1-6
  * @returns {idTYPE} id of new subject
- * @throws {403} token invalid
+ * @throws {401} token invalid
  * @throws {400} subject name not between 1-20 characters
  * @throws {400} level is not either 0 or 1
+ * @throws {400} group number is not from 1 to subjects.groups (6)
  */
 export function adminAddSubject(
   token: string,
@@ -86,16 +89,16 @@ export function adminAddSubject(
   validateAdminToken(token);
 
   if (name.length < 1 || name.length > 20) {
-    throw new Error("invalid name length");
+    throw createError(400, "invalid name length");
   }
   if (level != 0 && level != 1) {
-    throw new Error("level must be 0 (SL) or 1 (HL/SL)");
+    throw createError(400, "level must be 0 (SL) or 1 (HL/SL)");
   }
 
   const subjects: subjectsTYPE = getData(subjectsDataPATH);
 
   if (group < 1 || group > subjects.groups) {
-    throw new Error("group num must be from 1-6");
+    throw createError(400, "group num must be from 1-6");
   }
 
   const newId = generateId([].concat(...subjects.subjects));
@@ -118,7 +121,7 @@ export function adminAddSubject(
  * @param {string} question of new faq
  * @param {string} answer of new faq
  * @returns {idTYPE} id of new FAQ
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} question not between 1 and 50 characters
  * @throws {400} answer not between 1 and 100 characters
  */
@@ -130,10 +133,10 @@ export function adminAddFAQ(
   validateAdminToken(token);
 
   if (question.length < 1 || question.length > 50) {
-    throw new Error("invalid question length");
+    throw createError(401, "invalid question length");
   }
   if (answer.length < 1 || answer.length > 100) {
-    throw new Error("invalid answer length");
+    throw createError(401, "invalid answer length");
   }
 
   const faqs: faqsTYPE = getData(faqsDataPATH);
@@ -156,7 +159,7 @@ export function adminAddFAQ(
  * @param {string} token of admin (authentication)
  * @param {number} tutorId of tutor to remove
  * @returns { {} } empty object
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} no tutor with tutorId exists
  */
 export function adminRemoveTutor(token: string, tutorId: number): {} {
@@ -169,7 +172,7 @@ export function adminRemoveTutor(token: string, tutorId: number): {} {
   const finalLen = tutors.tutors.length;
 
   if (initLen == finalLen) {
-    throw new Error("no tutor id exists");
+    throw createError(400, "no tutor id exists");
   }
 
   setData(tutorDataPATH, tutors);
@@ -181,7 +184,7 @@ export function adminRemoveTutor(token: string, tutorId: number): {} {
  * @param {string} token of admin (authentication)
  * @param {number} subjectId of subject to remove
  * @returns { {} } empty object
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} no subject with subjectId exists
  */
 export function adminRemoveSubject(token: string, subjectId: number): {} {
@@ -206,7 +209,7 @@ export function adminRemoveSubject(token: string, subjectId: number): {} {
   }
 
   if (found == false) {
-    throw new Error("no subject with id found");
+    throw createError(400, "no subject with id found");
   }
 
   setData(subjectsDataPATH, subjects);
@@ -219,7 +222,7 @@ export function adminRemoveSubject(token: string, subjectId: number): {} {
  * @param {string} token of admin (authentication)
  * @param {number} qnId of faq to remove
  * @returns { {} } empty object
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} no qn with qnId exists
  */
 export function adminRemoveFAQ(token: string, qnId: number): {} {
@@ -232,7 +235,7 @@ export function adminRemoveFAQ(token: string, qnId: number): {} {
   const finalLen = faqs.faqs.length;
 
   if (initLen === finalLen) {
-    throw new Error("no question with qnId found");
+    throw createError(400, "no question with qnId found");
   }
 
   setData(faqsDataPATH, faqs);

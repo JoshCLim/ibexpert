@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-const createError = require("http-errors");
+import createError from "http-errors";
 
 import { adminPATH, getData, setData, hash } from "../data";
 import { adminsTYPE } from "../types";
