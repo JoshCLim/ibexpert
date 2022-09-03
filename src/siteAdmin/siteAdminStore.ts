@@ -120,6 +120,8 @@ export function adminAddStoreTag(token: string, tagName: string): idTYPE {
  * @throws {400} itemId not valid
  */
 export function adminRemoveStoreItem(token: string, itemId: number): {} {
+  validateAdminToken(token);
+
   const items: itemsTYPE = getData(storeItemsPATH);
 
   const initLen = items.items.length;
@@ -144,6 +146,8 @@ export function adminRemoveStoreItem(token: string, itemId: number): {} {
  * @throws {400} tagId not valid
  */
 export function adminRemoveStoreTag(token: string, tagId: number): {} {
+  validateAdminToken(token);
+
   const items: itemsTYPE = getData(storeItemsPATH);
 
   const initLen = items.tags.length;
