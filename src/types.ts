@@ -92,3 +92,24 @@ export interface userProfileTYPE {
 export interface usersTYPE {
   users: userProfileTYPE[];
 }
+
+// bookings
+export enum packageTYPE {
+  payg = "PAYG",
+  standard = "STANDARD",
+  value = "VALUE",
+  other = "OTHER",
+}
+
+export interface bookingTYPE {
+  id: number;
+  users: number[]; // array of uIds in booking
+  tutor: number; // uId of tutor
+  timeStart: Date;
+  timeEnd: Date;
+  packageType: packageTYPE;
+}
+
+export interface bookingsTYPE {
+  bookings: bookingTYPE[];
+}
