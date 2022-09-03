@@ -24,6 +24,7 @@ const SECRET = "purply pink panthers pop party poppers pleasurably";
  *
  * @returns {token} token for new user to access site
  *
+ * @throws {400} email, password, nameFirst or nameLast === null
  * @throws {400} email invalid
  * @throws {400} email already taken
  * @throws {400} password < 6 characters
@@ -41,6 +42,15 @@ export function userAuthRegister(
   school?: string
 ): token {
   // error checking
+  if (
+    email == null ||
+    password == null ||
+    nameFirst == null ||
+    nameLast == null
+  ) {
+    throw createError(400, "missing required input");
+  }
+
   if (!isEmail(email)) {
     throw createError(400, "invalid email");
   }
@@ -63,7 +73,11 @@ export function userAuthRegister(
     );
   }
   const currentUsers: usersTYPE = getData(usersPATH);
-  if (currentUsers.users.filter((user) => user.email === email).length > 0) {
+  if (
+    currentUsers.users.filter(
+      (user) => user.email === email && user.removed === false
+    ).length > 0
+  ) {
     throw createError(400, "email already taken");
   }
 
