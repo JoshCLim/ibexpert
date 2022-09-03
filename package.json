@@ -10,7 +10,7 @@
         "tsc": "tsc --noImplicitAny",
         "start": "ts-node src/server.ts",
         "nodemon": "nodemon src/server.ts --config nodemon.json",
-        "docs": "jsdoc -c jsdoc.json"
+        "docs": "jsdoc -c jsdoc.json -r ./src/*"
     },
     "repository": {
         "type": "git",
