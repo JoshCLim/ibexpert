@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import createError from "http-errors";
 
 import { adminPATH, getData, setData, hash } from "../data";
 import { adminsTYPE } from "../types";
@@ -17,7 +18,7 @@ const SECRET = "up n gos tickle my toes";
  *
  * @returns {token} (hashed) session token for user
  *
- * @throws {400} if email or password invalid
+ * @throws {401} if email or password invalid
  */
 export function adminLogin(email: string, password: string): token {
   const admins: adminsTYPE = getData(adminPATH);
@@ -28,7 +29,7 @@ export function adminLogin(email: string, password: string): token {
   );
 
   if (matchingUsers.length < 1) {
-    throw new Error("invalid email / password");
+    throw createError(401, "invalid email / password");
   }
 
   const newToken = uuid();
@@ -46,7 +47,7 @@ export function adminLogin(email: string, password: string): token {
  *
  * @returns { {} } if logout successful
  *
- * @throws {400} if token doesn't exist
+ * @throws {401} if token doesn't exist
  */
 export function adminLogout(token: string) {
   const admins: adminsTYPE = getData(adminPATH);
@@ -64,7 +65,7 @@ export function adminLogout(token: string) {
   });
 
   if (!tokenFound) {
-    throw new Error("no token exists");
+    throw createError(401, "no token exists");
   }
 
   return {};
@@ -107,7 +108,7 @@ export function validateAdminToken(token: string): boolean {
   });
 
   if (found == false) {
-    throw new Error("invalid admin token");
+    throw createError(401, "invalid admin token");
   }
 
   return true;

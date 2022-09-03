@@ -177,6 +177,17 @@ app.post("/user/auth/logout/all", (req, res) => {
   res.json(userAuthLogoutAll(token));
 });
 
+// error handling
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.send({
+    error: {
+      status: err.status || 500,
+      message: err.message,
+    },
+  });
+});
+
 // start server
 app.listen(PORT, HOST, () => {
   console.log(`⚡️ Server listening on port ${PORT}`);

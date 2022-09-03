@@ -1,3 +1,5 @@
+import createError from "http-errors";
+
 import { getData, setData, generateId, storeItemsPATH } from "../data";
 import { itemType, itemTYPE, itemsTYPE, idTYPE, tagTYPE } from "../types";
 import { validateAdminToken } from "./siteAdminAuth";
@@ -11,7 +13,7 @@ import { validateAdminToken } from "./siteAdminAuth";
  * @param {string} description of item
  * @param {itemType} type of item (either NOTES or ASSIGNMENT)
  * @returns {idTYPE} id of new store item
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} any input is null OR undefined
  * @throws {400} name is not between 1-20 characters
  * @throws {400} price <= 0
@@ -35,20 +37,20 @@ export function adminAddStoreItem(
     description == null ||
     type == null
   ) {
-    throw new Error("input detected as null");
+    throw createError(400, "input detected as null");
   }
 
   if (name.length < 1 || name.length > 20) {
-    throw new Error("store item name must be 1-20 characters");
+    throw createError(400, "store item name must be 1-20 characters");
   }
   if (price <= 0) {
-    throw new Error("price must be a positive number");
+    throw createError(400, "price must be a positive number");
   }
   if (description.length < 1 || description.length > 1000) {
-    throw new Error("description must be between 1-1000 characters");
+    throw createError(400, "description must be between 1-1000 characters");
   }
   if (type !== "NOTES" && type !== "ASSIGNMENT") {
-    throw new Error("type must be NOTES or ASSIGNMENT");
+    throw createError(400, "type must be NOTES or ASSIGNMENT");
   }
 
   const items: itemsTYPE = getData(storeItemsPATH);
@@ -78,7 +80,7 @@ export function adminAddStoreItem(
  * @param {string} token of admin (authentication)
  * @param {string} tagName of new tag
  * @returns {idTYPE} id of new tag
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} tag name is null
  * @throws {400} tag name not 1-12 characters
  */
@@ -86,11 +88,11 @@ export function adminAddStoreTag(token: string, tagName: string): idTYPE {
   validateAdminToken(token);
 
   if (tagName == null) {
-    throw new Error("tagName is null");
+    throw createError(400, "tagName is null");
   }
 
   if (tagName.length < 1 || tagName.length > 12) {
-    throw new Error("tag name must be between 1-12 characters");
+    throw createError(400, "tag name must be between 1-12 characters");
   }
 
   const items: itemsTYPE = getData(storeItemsPATH);
@@ -114,7 +116,7 @@ export function adminAddStoreTag(token: string, tagName: string): idTYPE {
  * @param {string} token of admin (authentication)
  * @param {number} itemId of item to remove
  * @returns { {} } empty object
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} itemId not valid
  */
 export function adminRemoveStoreItem(token: string, itemId: number): {} {
@@ -125,7 +127,7 @@ export function adminRemoveStoreItem(token: string, itemId: number): {} {
   const finalLen = items.items.length;
 
   if (initLen === finalLen) {
-    throw new Error("no item with id exists");
+    throw createError(400, "no item with id exists");
   }
 
   setData(storeItemsPATH, items);
@@ -138,7 +140,7 @@ export function adminRemoveStoreItem(token: string, itemId: number): {} {
  * @param {string} token
  * @param {number} tagId
  * @returns { {} } empty object
- * @throws {403} invalid token
+ * @throws {401} invalid token
  * @throws {400} tagId not valid
  */
 export function adminRemoveStoreTag(token: string, tagId: number): {} {
@@ -149,7 +151,7 @@ export function adminRemoveStoreTag(token: string, tagId: number): {} {
   const finalLen = items.tags.length;
 
   if (initLen === finalLen) {
-    throw new Error("no tag with that id exists");
+    throw createError(400, "no tag with that id exists");
   }
 
   items.items = items.items.map((item) => {
