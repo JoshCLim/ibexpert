@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 import crypto from "crypto";
 import isEmail from "validator/lib/isEmail";
+import createError from "http-errors";
 
 import { getData, setData, hash, usersPATH, generateId } from "../data";
 import { userProfileTYPE, usersTYPE } from "../types";
@@ -41,26 +42,29 @@ export function userAuthRegister(
 ): token {
   // error checking
   if (!isEmail(email)) {
-    throw new Error("invalid email");
+    throw createError(400, "invalid email");
   }
   if (password.length < 6) {
-    throw new Error("password must be at least 6 characters");
+    throw createError(400, "password must be at least 6 characters");
   }
   if (nameFirst.length < 1 || nameFirst.length > 20) {
-    throw new Error("first name must be between 1-20 characters");
+    throw createError(400, "first name must be between 1-20 characters");
   }
   if (nameLast.length < 1 || nameLast.length > 20) {
-    throw new Error("last name must be between 1-20 characters");
+    throw createError(400, "last name must be between 1-20 characters");
   }
   if (
     graduationYear !== null &&
     graduationYear < new Date().getFullYear() - 10
   ) {
-    throw new Error("graduation year must be within 10 years of current year");
+    throw createError(
+      400,
+      "graduation year must be within 10 years of current year"
+    );
   }
   const currentUsers: usersTYPE = getData(usersPATH);
   if (currentUsers.users.filter((user) => user.email === email).length > 0) {
-    throw new Error("email already taken");
+    throw createError(400, "email already taken");
   }
 
   // generate new user id
@@ -107,8 +111,8 @@ export function userAuthRegister(
  *
  * @returns {token} token for user to access site
  *
- * @throws {403} if email invalid
- * @throws {403} if password invalid
+ * @throws {401} if email invalid
+ * @throws {401} if password invalid
  */
 export function userAuthLogin(email: string, password: string): token {
   const currentUsers: usersTYPE = getData(usersPATH);
@@ -117,14 +121,15 @@ export function userAuthLogin(email: string, password: string): token {
     (user) => user.email === email
   );
   if (matchingEmail.length === 0) {
-    throw new Error("invalid login details");
+    throw createError(401, "invalid login details");
   } else if (matchingEmail.length > 1) {
-    throw new Error(
+    throw createError(
+      500,
       "internal server error: more than one user with same email"
     );
   }
   if (matchingEmail[0].password !== password) {
-    throw new Error("invalid password");
+    throw createError(401, "invalid login details");
   }
 
   const newToken = uuid();
@@ -142,7 +147,7 @@ export function userAuthLogin(email: string, password: string): token {
  *
  * @returns { {} } empty object
  *
- * @throws {403} if invalid token
+ * @throws {401} if invalid token
  */
 export function userAuthLogout(token: string): {} {
   const currentUsers: usersTYPE = getData(usersPATH);
@@ -152,10 +157,10 @@ export function userAuthLogout(token: string): {} {
     return hashedTokens.includes(token);
   });
   if (matchingTokens.length === 0) {
-    throw new Error("invalid token");
+    throw createError(401, "invalid token");
   }
   if (matchingTokens.length > 1) {
-    throw new Error("internal server error: duplicate tokens");
+    throw createError(500, "internal server error: duplicate tokens");
   }
 
   matchingTokens[0].tokens = matchingTokens[0].tokens.filter(
@@ -173,7 +178,7 @@ export function userAuthLogout(token: string): {} {
  *
  * @returns { {} } empty object
  *
- * @throws {403} if invalid token
+ * @throws {401} if invalid token
  */
 export function userAuthLogoutAll(token: string): {} {
   const currentUsers: usersTYPE = getData(usersPATH);
@@ -183,10 +188,10 @@ export function userAuthLogoutAll(token: string): {} {
     return hashedTokens.includes(token);
   });
   if (matchingTokens.length === 0) {
-    throw new Error("invalid token");
+    throw createError(401, "invalid token");
   }
   if (matchingTokens.length > 1) {
-    throw new Error("internal server error: duplicate tokens");
+    throw createError(500, "internal server error: duplicate tokens");
   }
 
   matchingTokens[0].tokens = [];
@@ -229,7 +234,7 @@ function generateHandleStr(newHandleStr: string): string {
  * validates a user token
  * @param {string} token to validate
  * @returns {boolean} true, if token valid
- * @throws {403} invalid token
+ * @throws {401} invalid token
  */
 export function validateUserToken(token: string): boolean {
   const currentUsers: usersTYPE = getData(usersPATH);
@@ -239,10 +244,10 @@ export function validateUserToken(token: string): boolean {
     return hashedTokens.includes(token);
   });
   if (matchingTokens.length === 0) {
-    throw new Error("invalid token");
+    throw createError(401, "invalid token");
   }
   if (matchingTokens.length > 1) {
-    throw new Error("internal server error: duplicate tokens");
+    throw createError(500, "internal server error: duplicate tokens");
   }
 
   return true;
