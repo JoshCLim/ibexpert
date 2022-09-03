@@ -75,7 +75,7 @@ export interface idTYPE {
 }
 
 // users
-export interface userProfileTYPE {
+export interface userTYPE {
   id: number; // user id
   tokens: string[]; // list of user tokens
   email: string;
@@ -87,8 +87,30 @@ export interface userProfileTYPE {
   dob?: Date; // date of birth
   school?: string;
   removed: boolean; // is the user removed?
+  bookings: number; // number of unbooked bookings
 }
 
 export interface usersTYPE {
-  users: userProfileTYPE[];
+  users: userTYPE[];
+}
+
+// bookings
+export enum packageTYPE {
+  payg = "PAYG",
+  standard = "STANDARD",
+  value = "VALUE",
+  other = "OTHER",
+}
+
+export interface bookingTYPE {
+  id: number;
+  users: number[]; // array of uIds in booking
+  tutor: number; // uId of tutor
+  timeStart: Date;
+  timeEnd: Date;
+  packageType: packageTYPE;
+}
+
+export interface bookingsTYPE {
+  bookings: bookingTYPE[];
 }

@@ -31,6 +31,11 @@ import {
   userAuthLogoutAll,
   userAuthRegister,
 } from "./userPortal/userAuth";
+import {
+  userBookingsCancel,
+  userBookingsCreate,
+  userBookingsList,
+} from "./userPortal/userBookings";
 
 const app = express();
 
@@ -175,6 +180,24 @@ app.post("/user/auth/logout", (req, res) => {
 app.post("/user/auth/logout/all", (req, res) => {
   const token = req.headers.token as string;
   res.json(userAuthLogoutAll(token));
+});
+
+// user bookings
+app.post("/user/bookings/create", (req, res) => {
+  const token = req.headers.token as string;
+  const { tutorId, timeStart, timeEnd } = req.body;
+  res.json(userBookingsCreate(token, tutorId, timeStart, timeEnd));
+});
+
+app.delete("/user/bookings/cancel", (req, res) => {
+  const token = req.headers.token as string;
+  const { bookingId } = req.body;
+  res.json(userBookingsCancel(token, bookingId));
+});
+
+app.get("/user/bookings/list", (req, res) => {
+  const token = req.headers.token as string;
+  res.json(userBookingsList(token));
 });
 
 // error handling

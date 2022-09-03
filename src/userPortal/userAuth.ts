@@ -4,7 +4,7 @@ import isEmail from "validator/lib/isEmail";
 import createError from "http-errors";
 
 import { getData, setData, hash, usersPATH, generateId } from "../data";
-import { userProfileTYPE, usersTYPE } from "../types";
+import { userTYPE, usersTYPE } from "../types";
 
 interface token {
   token: string;
@@ -24,6 +24,7 @@ const SECRET = "purply pink panthers pop party poppers pleasurably";
  *
  * @returns {token} token for new user to access site
  *
+ * @throws {400} email, password, nameFirst or nameLast === null
  * @throws {400} email invalid
  * @throws {400} email already taken
  * @throws {400} password < 6 characters
@@ -41,6 +42,15 @@ export function userAuthRegister(
   school?: string
 ): token {
   // error checking
+  if (
+    email == null ||
+    password == null ||
+    nameFirst == null ||
+    nameLast == null
+  ) {
+    throw createError(400, "missing required input");
+  }
+
   if (!isEmail(email)) {
     throw createError(400, "invalid email");
   }
@@ -63,7 +73,11 @@ export function userAuthRegister(
     );
   }
   const currentUsers: usersTYPE = getData(usersPATH);
-  if (currentUsers.users.filter((user) => user.email === email).length > 0) {
+  if (
+    currentUsers.users.filter(
+      (user) => user.email === email && user.removed === false
+    ).length > 0
+  ) {
     throw createError(400, "email already taken");
   }
 
@@ -77,7 +91,7 @@ export function userAuthRegister(
   const newToken = uuid();
 
   // new user object
-  const newUser: userProfileTYPE = {
+  const newUser: userTYPE = {
     id: newId,
     email: email,
     password: password,
@@ -86,6 +100,7 @@ export function userAuthRegister(
     tokens: [newToken],
     handleStr: newHandleStr,
     removed: false,
+    bookings: 0,
   };
   if (graduationYear !== null) {
     newUser.graduationYear = graduationYear;
