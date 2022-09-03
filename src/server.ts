@@ -185,8 +185,8 @@ app.post("/user/auth/logout/all", (req, res) => {
 // user bookings
 app.post("/user/bookings/create", (req, res) => {
   const token = req.headers.token as string;
-  const { tutorId, timeStart, timeEnd, packageType } = req.body;
-  res.json(userBookingsCreate(token, tutorId, timeStart, timeEnd, packageType));
+  const { tutorId, timeStart, timeEnd } = req.body;
+  res.json(userBookingsCreate(token, tutorId, timeStart, timeEnd));
 });
 
 app.delete("/user/bookings/cancel", (req, res) => {

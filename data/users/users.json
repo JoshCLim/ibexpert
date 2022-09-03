@@ -1,3 +1,17 @@
 {
-    "users": []
+    "users": [
+        {
+            "id": 1,
+            "email": "joshconstantinelim@gmail.com",
+            "password": "tutoring2022",
+            "nameFirst": "josh",
+            "nameLast": "lim",
+            "tokens": [
+                "0239b337-fbf3-4c9e-bb42-72a5f6531b76"
+            ],
+            "handleStr": "josh.lim",
+            "removed": false,
+            "bookings": 0
+        }
+    ]
 }

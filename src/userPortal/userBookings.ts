@@ -13,22 +13,20 @@ interface bookingIdTYPE {
  * @param {number} tutorId of tutor who booking is made with
  * @param {Date} timeStart start of booking time
  * @param {Date} timeEnd end of booking time
- * @param {packageTYPE} packageType package type = either payg, standard, value, other
  *
- * @returns bookingId of new booking created
+ * @returns {bookingIdTYPE} bookingId of new booking created
  *
  * @throws {401} invalid token
  * @throws {400} invalid tutorId
  * @throws {403} user has zero bookings left
  * @throws {400} booking is in the past OR less than 24 hours in the future
- * @throws {400} packageType is not a valid one of the options
+ * @throws {400} tutor is not available for the given time
  */
 export function userBookingsCreate(
   token: string,
   tutorId: number,
   timeStart: Date,
-  timeEnd: Date,
-  packageType: packageTYPE
+  timeEnd: Date
 ): bookingIdTYPE {
   throw createError(501, "not implemented");
 }

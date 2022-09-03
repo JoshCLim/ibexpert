@@ -1,0 +1,12 @@
+{
+    "tutors": [
+        {
+            "email": "joshconstantinelim@gmail.com",
+            "password": "tutoring2022",
+            "tokens": [],
+            "nameFirst": "Josh",
+            "nameLast": "Lim",
+            "handleStr": "josh.lim"
+        }
+    ]
+}
