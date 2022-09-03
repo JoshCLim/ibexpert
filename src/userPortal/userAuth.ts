@@ -4,7 +4,7 @@ import isEmail from "validator/lib/isEmail";
 import createError from "http-errors";
 
 import { getData, setData, hash, usersPATH, generateId } from "../data";
-import { userProfileTYPE, usersTYPE } from "../types";
+import { userTYPE, usersTYPE } from "../types";
 
 interface token {
   token: string;
@@ -77,7 +77,7 @@ export function userAuthRegister(
   const newToken = uuid();
 
   // new user object
-  const newUser: userProfileTYPE = {
+  const newUser: userTYPE = {
     id: newId,
     email: email,
     password: password,
@@ -86,6 +86,7 @@ export function userAuthRegister(
     tokens: [newToken],
     handleStr: newHandleStr,
     removed: false,
+    bookings: 0,
   };
   if (graduationYear !== null) {
     newUser.graduationYear = graduationYear;

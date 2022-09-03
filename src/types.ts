@@ -75,7 +75,7 @@ export interface idTYPE {
 }
 
 // users
-export interface userProfileTYPE {
+export interface userTYPE {
   id: number; // user id
   tokens: string[]; // list of user tokens
   email: string;
@@ -87,10 +87,11 @@ export interface userProfileTYPE {
   dob?: Date; // date of birth
   school?: string;
   removed: boolean; // is the user removed?
+  bookings: number; // number of unbooked bookings
 }
 
 export interface usersTYPE {
-  users: userProfileTYPE[];
+  users: userTYPE[];
 }
 
 // bookings
